@@ -537,11 +537,12 @@ a:focus, button:focus {
 .contact-info {
   margin: 1.5rem 0;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.phone-info {
+.contact-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -549,11 +550,23 @@ a:focus, button:focus {
   font-size: 0.9rem;
 }
 
-.phone-info svg {
+.contact-item svg {
   color: var(--primary-color);
 }
 
-.phone-info span {
+.contact-item a {
+  color: #666;
+  text-decoration: none;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+}
+
+.contact-item a:hover {
+  color: var(--primary-color);
+}
+
+.contact-item span {
   font-family: monospace;
   letter-spacing: 0.5px;
 }
