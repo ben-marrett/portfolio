@@ -570,3 +570,107 @@ a:focus, button:focus {
   font-family: monospace;
   letter-spacing: 0.5px;
 }
+
+/* Hamburger menu button - start hidden by default */
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #333;  /* Make sure this color is visible */
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: #333;  /* Make sure this color is visible */
+  transition: all 0.3s;
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  /* Animation for open state */
+  .hamburger.open {
+    background-color: transparent;  /* Middle line disappears */
+  }
+
+  .hamburger.open::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .hamburger.open::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.open {
+    display: block;
+  }
+
+  .nav-links nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .header-content {
+    padding: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-title {
+    margin-right: 3rem; /* Make room for hamburger */
+  }
+
+  .logo-title h1 {
+    font-size: 1.25rem;
+  }
+
+  .logo-title .title {
+    font-size: 0.8rem;
+  }
+}

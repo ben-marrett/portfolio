@@ -114,6 +114,7 @@ const blogPosts: BlogPost[] = [
 
 const App: React.FC = () => {
   const [visible, setVisible] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   useEffect(() => {
     setVisible(true);
@@ -152,14 +153,24 @@ const App: React.FC = () => {
           <h1>Ben Teiko Marrett</h1>
           <div className="title">Full Stack Developer</div>
         </div>
-        <div className="nav-links">
+        
+        {/* Hamburger button for mobile */}
+        <button 
+          className="menu-toggle" 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span className={`hamburger ${isMenuOpen ? 'open' : ''}`}></span>
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <nav>
-            <a href="#about">About</a>
-            <a href="#tech">Tech Stack</a>
-            <a href="#experience">Experience</a>
-            <a href="#blog">Blog</a>
-            <a href="#contact">Contact</a>
-            <a href="mailto:benteiko@gmail.com" className="contact-button">Email Me</a>
+            <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+            <a href="#tech" onClick={() => setIsMenuOpen(false)}>Tech Stack</a>
+            <a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a>
+            <a href="#blog" onClick={() => setIsMenuOpen(false)}>Blog</a>
+            <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
+            <a href="mailto:benteiko@gmail.com" className="contact-button">Get in Touch</a>
           </nav>
         </div>
       </div>
