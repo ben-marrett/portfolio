@@ -5,7 +5,19 @@ import './App.css';
 interface Technology {
   name: string;
   type: 'frontend' | 'backend' | 'database' | 'devops' | 'testing' | 'infrastructure';
-  level: number; // 1-5 skill level
+  context: string; // Usage context instead of skill level
+}
+
+// Project data
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  liveUrl?: string;
+  repoUrl?: string;
+  npmUrl?: string;
+  seLens: string; // Software Engineering perspective
+  qaLens: string; // QA perspective
 }
 
 // Experience data
@@ -17,51 +29,72 @@ interface Experience {
   tools: string[];
 }
 
-// Blog post data
-interface BlogPost {
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  link: string;
-}
-
 const technologies: Technology[] = [
   // Frontend
-  { name: 'React', type: 'frontend', level: 5 },
-  { name: 'TypeScript', type: 'frontend', level: 5 },
-  { name: 'Next.js', type: 'frontend', level: 4 },
-  { name: 'Tailwind CSS', type: 'frontend', level: 4 },
-  { name: 'Leaflet', type: 'frontend', level: 4 },
-  
+  { name: 'TypeScript', type: 'frontend', context: 'CLI tools, automation, web apps' },
+  { name: 'React', type: 'frontend', context: 'Feature development, production sites' },
+  { name: 'Tailwind CSS', type: 'frontend', context: 'UI development' },
+  { name: 'Leaflet', type: 'frontend', context: 'Interactive mapping' },
+
   // Backend
-  { name: 'Node.js', type: 'backend', level: 5 },
-  { name: 'Express', type: 'backend', level: 5 },
-  { name: 'Python', type: 'backend', level: 4 },
-  { name: 'Django', type: 'backend', level: 3 },
-  
+  { name: 'Node.js', type: 'backend', context: 'APIs, CLI tools, backend services' },
+  { name: 'Express', type: 'backend', context: 'REST APIs, middleware' },
+
   // Database
-  { name: 'MongoDB', type: 'database', level: 5 },
-  { name: 'SQL', type: 'database', level: 4 },
-  { name: 'PostgreSQL', type: 'database', level: 4 },
-  { name: 'Redis', type: 'database', level: 3 },
-  
+  { name: 'PostgreSQL', type: 'database', context: 'Production databases' },
+  { name: 'MongoDB', type: 'database', context: 'Document storage' },
+  { name: 'Cosmos DB', type: 'database', context: 'NoSQL at scale' },
+
   // DevOps
-  { name: 'Azure', type: 'devops', level: 4 },
-  { name: 'CI/CD', type: 'devops', level: 3 },
+  { name: 'Azure DevOps', type: 'devops', context: 'CI/CD, test management' },
+  { name: 'Azure Logic Apps', type: 'devops', context: 'Workflow automation' },
 
   // Testing/Quality
-  { name: 'Playwright', type: 'testing', level: 5 },
-  { name: 'Jest', type: 'testing', level: 4 },
-  { name: 'Cypress', type: 'testing', level: 4 },
-  { name: 'Chai', type: 'testing', level: 3 },
+  { name: 'Playwright', type: 'testing', context: 'E2E automation, CI/CD integration' },
+  { name: 'Jest', type: 'testing', context: 'Unit & component testing' },
+  { name: 'k6', type: 'testing', context: 'Performance testing' },
+  { name: 'Postman', type: 'testing', context: 'API testing' },
 
   // Cloud/Infrastructure
-  { name: 'Netlify', type: 'infrastructure', level: 5 },
-  { name: 'Vercel', type: 'infrastructure', level: 5 },
-  { name: 'AWS', type: 'infrastructure', level: 4 },
-  { name: 'GCP', type: 'infrastructure', level: 3 },
+  { name: 'Netlify', type: 'infrastructure', context: 'Static site deployment' },
+  { name: 'Vercel', type: 'infrastructure', context: 'Frontend hosting' },
+  { name: 'Railway', type: 'infrastructure', context: 'Full-stack deployment' },
+];
 
+const projects: Project[] = [
+  {
+    title: 'Builder Website',
+    description: 'Modern, responsive construction company website. Features before/after project gallery, service showcase, team profiles, and contact form.',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Jest'],
+    liveUrl: 'https://builder-website-example.netlify.app',
+    seLens: 'Component architecture, responsive design, animation system',
+    qaLens: 'Jest test coverage, accessibility focus'
+  },
+  {
+    title: "Crow's Nest",
+    description: 'Real-time ship tracking and route planning for New Zealand waters. Live AIS data, weather popups, and nautical-themed UI.',
+    tech: ['Node.js', 'Express', 'PostgreSQL', 'Leaflet', 'WebSocket'],
+    liveUrl: 'https://crowsnest.up.railway.app',
+    seLens: 'Real-time data pipeline, external API integration, database design',
+    qaLens: 'Error handling, WebSocket reliability, data validation'
+  },
+  {
+    title: 'Shieldstack',
+    description: 'Published npm CLI tool for ZEC/BTC portfolio tracking with goal-based scenario analysis.',
+    tech: ['TypeScript', 'Node.js'],
+    npmUrl: 'https://www.npmjs.com/package/shieldstack',
+    repoUrl: 'https://github.com/ben-marrett/shieldstack',
+    seLens: 'CLI UX design, npm publishing, API integration',
+    qaLens: 'Input validation, edge case handling, error messaging'
+  },
+  {
+    title: 'Playwright Test Examples',
+    description: 'Production E2E test suite demonstrating page object model and CI integration.',
+    tech: ['Playwright', 'TypeScript'],
+    repoUrl: 'https://github.com/ben-marrett/playwright-test-examples',
+    seLens: '',
+    qaLens: 'Page object model, test organization, CI/CD integration, cross-browser testing'
+  }
 ];
 
 const experiences: Experience[] = [
@@ -70,7 +103,7 @@ const experiences: Experience[] = [
     company: "Spark NZ",
     period: "2023 - 2024",
     description: "Internship and extended contract working on automated testing for Spark's CRM system and Marketing Automation campaigns.",
-    tools: ["Playwright", "JavaScript", "Azure DevOps", "Azure Logic Apps", "Cosmos DB"]
+    tools: ["Playwright", "TypeScript", "Azure DevOps", "Azure Logic Apps", "Cosmos DB", "k6", "Postman", "Manual Testing", "Test Design"]
   },
   {
     title: "Full Stack Developer",
@@ -88,30 +121,6 @@ const experiences: Experience[] = [
   }
 ];
 
-const blogPosts: BlogPost[] = [
-  {
-    title: "Building Scalable APIs with Node.js and TypeScript",
-    description: "A comprehensive guide to structuring your backend for performance and maintainability.",
-    date: "Coming soon",
-    readTime: "10 min read",
-    link: "#"
-  },
-  {
-    title: "React Performance Optimization Techniques",
-    description: "Practical strategies to improve your React application's speed and user experience.",
-    date: "Coming soon",
-    readTime: "8 min read",
-    link: "#"
-  },
-  {
-    title: "Database Selection Guide for Modern Web Applications",
-    description: "How to choose the right database technology for your specific project requirements.",
-    date: "Coming soon",
-    readTime: "12 min read",
-    link: "#"
-  }
-];
-
 const App: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -122,22 +131,15 @@ const App: React.FC = () => {
   
   const renderTechCategory = (type: Technology['type'], title: string) => {
     const techs = technologies.filter(tech => tech.type === type);
-    
+
     return (
       <div className="tech-category">
         <h3>{title}</h3>
         <div className="tech-list">
           {techs.map(tech => (
             <div key={tech.name} className="tech-item">
-              <span>{tech.name}</span>
-              <div className="skill-level">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <div 
-                    key={i} 
-                    className={`skill-dot ${i < tech.level ? 'filled' : ''}`} 
-                  />
-                ))}
-              </div>
+              <span className="tech-name">{tech.name}</span>
+              <span className="tech-context">{tech.context}</span>
             </div>
           ))}
         </div>
@@ -151,7 +153,7 @@ const App: React.FC = () => {
       <div className="header-content">
         <div className="logo-title">
           <h1>Ben Teiko Marrett</h1>
-          <div className="title">Full Stack Developer</div>
+          <div className="title">Software Engineer & QA Specialist</div>
         </div>
         
         {/* Hamburger button for mobile */}
@@ -166,9 +168,9 @@ const App: React.FC = () => {
         <div className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
           <nav>
             <a href="#about" onClick={() => setIsMenuOpen(false)}>About</a>
+            <a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a>
             <a href="#tech" onClick={() => setIsMenuOpen(false)}>Tech Stack</a>
             <a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a>
-            <a href="#blog" onClick={() => setIsMenuOpen(false)}>Blog</a>
             <a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a>
             <a href="mailto:benteiko@gmail.com" className="contact-button">Get in Touch</a>
           </nav>
@@ -178,8 +180,8 @@ const App: React.FC = () => {
       
       <section className="hero">
         <div className="value-proposition">
-          <h2>Full-stack developer delivering high-impact web solutions</h2>
-          <p>I transform business requirements into elegant, scalable applications that users love</p>
+          <h2>I build, test, and ship reliable software</h2>
+          <p>Full-stack owner from design to production</p>
         </div>
       </section>
       
@@ -187,11 +189,60 @@ const App: React.FC = () => {
         <h2>About Me</h2>
         <div className="about-content">
           <div className="about-text">
-            <p>I create fast, reliable websites tailored for local businesses, combining clean design with solid performance. With experience in modern web technologies like TypeScript, React, and Node.js, I build custom solutions that help businesses grow online. My background in testing and automation ensures every site is built to last, providing long-term value and easy maintenance.</p>
+            <p>I build and test software for a living. My work spans full-stack web development, test automation, and production operations. I've shipped React apps, CLI tools on npm, and automated test suites running in CI/CD pipelines. I care about code that works, stays working, and is easy to change.</p>
           </div>
         </div>
       </section>
-      
+
+      <section id="projects" className="projects">
+        <h2>Projects</h2>
+        <div className="project-grid">
+          {projects.map((project, index) => (
+            <div key={index} className="project-card">
+              <h3>{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+              <div className="project-tech">
+                {project.tech.map((t, i) => (
+                  <span key={i} className="tech-tag">{t}</span>
+                ))}
+              </div>
+              <div className="project-lenses">
+                {project.seLens && (
+                  <div className="lens">
+                    <span className="lens-label">Engineering:</span>
+                    <span className="lens-text">{project.seLens}</span>
+                  </div>
+                )}
+                {project.qaLens && (
+                  <div className="lens">
+                    <span className="lens-label">QA:</span>
+                    <span className="lens-text">{project.qaLens}</span>
+                  </div>
+                )}
+              </div>
+              <div className="project-links">
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-link live">
+                    Live
+                  </a>
+                )}
+                {project.repoUrl && (
+                  <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                    GitHub
+                  </a>
+                )}
+                {project.npmUrl && (
+                  <a href={project.npmUrl} target="_blank" rel="noopener noreferrer" className="project-link">
+                    npm
+                  </a>
+                )}
+              </div>
+              {/* TODO: Add screenshot/visual for {project.title} */}
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="tech" className="tech-stack">
         <h2>Tech Stack</h2>
         <div className="tech-categories">
@@ -227,23 +278,6 @@ const App: React.FC = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-      
-      <section id="blog" className="blog">
-        <h2>Blog</h2>
-        <div className="blog-posts">
-          {blogPosts.map((post, index) => (
-            <a key={index} href={post.link} className="blog-card">
-              <div className="blog-meta">
-                <span className="blog-date">{post.date}</span>
-                <span className="blog-read-time">{post.readTime}</span>
-              </div>
-              <h3>{post.title}</h3>
-              <p>{post.description}</p>
-              <span className="read-more">Read more →</span>
-            </a>
           ))}
         </div>
       </section>
