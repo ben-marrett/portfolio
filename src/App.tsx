@@ -39,6 +39,8 @@ const technologies: Technology[] = [
   // Backend
   { name: 'Node.js', type: 'backend', context: 'APIs, CLI tools, backend services' },
   { name: 'Express', type: 'backend', context: 'REST APIs, middleware' },
+  { name: 'Java', type: 'backend', context: 'Backend services, state management' },
+  { name: 'Spring Boot', type: 'backend', context: 'REST APIs, concurrency control' },
 
   // Database
   { name: 'PostgreSQL', type: 'database', context: 'Production databases' },
@@ -48,6 +50,7 @@ const technologies: Technology[] = [
   // DevOps
   { name: 'Azure DevOps', type: 'devops', context: 'CI/CD, test management' },
   { name: 'Azure Logic Apps', type: 'devops', context: 'Workflow automation' },
+  { name: 'Docker', type: 'devops', context: 'Containerised development and deployment' },
 
   // Testing/Quality
   { name: 'Playwright', type: 'testing', context: 'E2E automation, CI/CD integration' },
@@ -63,6 +66,23 @@ const technologies: Technology[] = [
 
 const projects: Project[] = [
   {
+    title: 'Flight Rebooking Service',
+    description: 'Backend service for airline disruption recovery. Demonstrates safe state transitions, idempotent operations, and optimistic concurrency control to prevent double-bookings.',
+    tech: ['Java', 'Spring Boot', 'PostgreSQL', 'Docker'],
+    repoUrl: 'https://github.com/ben-marrett/flight-rebooking-service',
+    seLens: 'State machine design, idempotency patterns, optimistic locking, REST API design',
+    qaLens: 'Concurrent operation safety, booking state edge cases, API contract validation'
+  },
+  {
+    title: 'Shieldstack',
+    description: 'Published npm CLI tool for ZEC/BTC portfolio tracking with goal-based scenario analysis.',
+    tech: ['TypeScript', 'Node.js'],
+    npmUrl: 'https://www.npmjs.com/package/shieldstack',
+    repoUrl: 'https://github.com/ben-marrett/shieldstack',
+    seLens: 'CLI UX design, npm publishing, API integration',
+    qaLens: 'Input validation, edge case handling, error messaging'
+  },
+  {
     title: 'Builder Website',
     description: 'Modern, responsive construction company website. Features before/after project gallery, service showcase, team profiles, and contact form.',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Jest'],
@@ -77,15 +97,6 @@ const projects: Project[] = [
     liveUrl: 'https://crowsnest.up.railway.app',
     seLens: 'Real-time data pipeline, external API integration, database design',
     qaLens: 'Error handling, WebSocket reliability, data validation'
-  },
-  {
-    title: 'Shieldstack',
-    description: 'Published npm CLI tool for ZEC/BTC portfolio tracking with goal-based scenario analysis.',
-    tech: ['TypeScript', 'Node.js'],
-    npmUrl: 'https://www.npmjs.com/package/shieldstack',
-    repoUrl: 'https://github.com/ben-marrett/shieldstack',
-    seLens: 'CLI UX design, npm publishing, API integration',
-    qaLens: 'Input validation, edge case handling, error messaging'
   },
   {
     title: 'Playwright Test Examples',
