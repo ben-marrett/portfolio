@@ -33,6 +33,7 @@ const technologies: Technology[] = [
   // Frontend
   { name: 'TypeScript', type: 'frontend', context: 'CLI tools, automation, web apps' },
   { name: 'React', type: 'frontend', context: 'Feature development, production sites' },
+  { name: 'Next.js', type: 'frontend', context: 'Full-stack React applications' },
   { name: 'Tailwind CSS', type: 'frontend', context: 'UI development' },
   { name: 'Leaflet', type: 'frontend', context: 'Interactive mapping' },
 
@@ -44,6 +45,7 @@ const technologies: Technology[] = [
 
   // Database
   { name: 'PostgreSQL', type: 'database', context: 'Production databases' },
+  { name: 'Supabase', type: 'database', context: 'Backend-as-a-service, real-time subscriptions' },
   { name: 'MongoDB', type: 'database', context: 'Document storage' },
   { name: 'Cosmos DB', type: 'database', context: 'NoSQL at scale' },
 
@@ -109,6 +111,13 @@ const projects: Project[] = [
 ];
 
 const experiences: Experience[] = [
+  {
+    title: "Freelance Software Developer",
+    company: "Kaipara Webworks",
+    period: "2025 - Present",
+    description: "Full-stack web development for clients. Building React/Next.js applications with Supabase backends, serverless Edge Functions, and third-party API integrations.",
+    tools: ["React", "Next.js", "TypeScript", "Supabase", "Edge Functions", "Resend"]
+  },
   {
     title: "Test Automation Engineer",
     company: "Spark NZ",
